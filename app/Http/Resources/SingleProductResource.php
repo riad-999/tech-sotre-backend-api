@@ -26,7 +26,12 @@ class SingleProductResource extends JsonResource
                     'comment' => $review->comment
                 ]);
         }
-        $sold = $this->orders->count();
+        // $sold = $this->orders->count();
+        $orders = $this->orders;
+        $sold = 0;
+        foreach ($orders as $order) {
+            $sold += $order->pivot->quantity;
+        }
         $score = round($sum / $reviews->count(), 1);
         return [
             'id' => $this->id,
