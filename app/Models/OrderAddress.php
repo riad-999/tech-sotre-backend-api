@@ -11,6 +11,8 @@ class OrderAddress extends Model
 
     protected $table = 'orders_addresses';
 
+    protected $guarded = [];
+
     public $timestamps = false;
 
     public function order()

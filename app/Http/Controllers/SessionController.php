@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Stripe;
 
 class SessionController extends Controller
 {
@@ -88,6 +89,18 @@ class SessionController extends Controller
         return response([
             'success' => true,
             'message' => 'loged out successfully'
+        ]);
+    }
+    public function auth()
+    {
+        $user = Auth::guard('web')->user();
+        return response([
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $user->phone,
+            'address' => $user->address->street,
+            'state' => $user->address->city,
+            'zip' => $user->address->zip
         ]);
     }
 }

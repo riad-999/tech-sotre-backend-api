@@ -51,6 +51,7 @@ class DatabaseSeeder extends Seeder
         //         ->create(['category_id' => $category->id]);
         // }
 
+        //CPUs
         {
             Product::factory()->create([
                 'name' => 'amd rysen 3 3200g',
@@ -159,7 +160,7 @@ class DatabaseSeeder extends Seeder
             Product::factory()->create([
                 'name' => 'intel i5 12600f',
                 'category_id' => 1,
-                'price' => 2000,
+                'price' => 20000,
                 'images' => json_encode([
                     'main' => 'i5-12600f.jpg',
                     'others' => [
@@ -197,12 +198,217 @@ class DatabaseSeeder extends Seeder
                 ])
             ]);
         }
-
-        // featured products
-        Product::factory()->create(['category_id' => 1, 'name' => 'rtx 3090', 'featured' => 1]);
-        Product::factory()->create(['category_id' => 2, 'name' => 'rysen 5950x', 'featured' => 1]);
-        Product::factory()->create(['category_id' => 3, 'name' => 'ram ddr5', 'featured' => 1]);
-        Product::factory()->create(['category_id' => 1, 'name' => 'rx 6800XT', 'featured' => 1]);
+        // GPUs
+        {
+            Product::factory()->create([
+                'name' => 'nvidia gtx 1650 super',
+                'category_id' => 2,
+                'price' => 18000,
+                'images' => json_encode([
+                    'main' => 'gtx-1650-super.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'nvidia gtx 1660 super',
+                'category_id' => 2,
+                'price' => 23000,
+                'images' => json_encode([
+                    'main' => 'gtx-1660-super.jpeg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'nvidia rtx 2060 super',
+                'category_id' => 2,
+                'price' => 28000,
+                'images' => json_encode([
+                    'main' => 'rtx-2060-super.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'Nvidia rtx 3060 ti',
+                'category_id' => 2,
+                'price' => 40000,
+                'images' => json_encode([
+                    'main' => 'rtx-3060-ti.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'nvidia rtx 3080',
+                'category_id' => 2,
+                'price' => 80000,
+                'featured' => 1,
+                'images' => json_encode([
+                    'main' => 'rtx-3080-ti.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'amd rx 6700 xt',
+                'category_id' => 2,
+                'price' => 60000,
+                'images' => json_encode([
+                    'main' => 'rx-6700-xt.png',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'amd rx 6800 xt',
+                'category_id' => 2,
+                'price' => 75000,
+                'featured' => 1,
+                'images' => json_encode([
+                    'main' => 'rx-6800-xt.webp',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'nvidia rtx 3090',
+                'category_id' => 2,
+                'price' => 150000,
+                'featured' => 1,
+                'images' => json_encode([
+                    'main' => 'rtx-3090.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+        }
+        // RAMs 
+        {
+            Product::factory()->create([
+                'name' => 'adata ram ddr4 3600mhz 16gb 2x8gb',
+                'category_id' => 3,
+                'price' => 6000,
+                'images' => json_encode([
+                    'main' => 'adata-ram.webp',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'curssair ram ddr5 5100mhz 16gb 2x8gb',
+                'category_id' => 3,
+                'price' => 12000,
+                'featured' => 1,
+                'images' => json_encode([
+                    'main' => 'curssaire-ram.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'kingston ram ddr4 3200mhz 8gb 1x8gb',
+                'category_id' => 3,
+                'price' => 3500,
+                'images' => json_encode([
+                    'main' => 'kingstron-ram.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+        }
+        // storage
+        {
+            Product::factory()->create([
+                'name' => 'adata ssd 500gb',
+                'category_id' => 4,
+                'price' => 4000,
+                'images' => json_encode([
+                    'main' => 'adata-ssd.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'seagate HDD 2Tb(hard disk, hard drive)',
+                'category_id' => 4,
+                'price' => 8000,
+                'images' => json_encode([
+                    'main' => 'seagate-hdd.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+        }
+        // mohterboards
+        {
+            Product::factory()->create([
+                'name' => 'asus prime b450-MA',
+                'category_id' => 7,
+                'price' => 4000,
+                'images' => json_encode([
+                    'main' => 'asus-b4580-ma.jpg',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+            Product::factory()->create([
+                'name' => 'msi mag b550 tomahawk',
+                'category_id' => 7,
+                'price' => 4000,
+                'images' => json_encode([
+                    'main' => 'msi-b550.png',
+                    'others' => [
+                        'image1.jpg',
+                        'image2.jpg',
+                        'image3.jpg'
+                    ]
+                ])
+            ]);
+        }
         // creating orders and thier addresses and link them to products
         foreach ($users as $user) {
             $order = Order::factory()

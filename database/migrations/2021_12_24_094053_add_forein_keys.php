@@ -22,7 +22,7 @@ class AddForeinKeys extends Migration
         Schema::table('orders_addresses', function (Blueprint $table) {
             $table->foreignId('order_id')->nullable()
                 ->after('id')->constrained('orders')
-                ->restrictOnUpdate()->restrictOnDelete();
+                ->restrictOnUpdate()->cascadeOnDelete();
         });
 
         Schema::table('products', function (Blueprint $table) {
@@ -44,8 +44,9 @@ class AddForeinKeys extends Migration
         });
 
         Schema::table('order_product', function (Blueprint $table) {
-            $table->foreignId('order_id')->after('id')->constrained('orders')
-                ->restrictOnUpdate()->restrictOnDelete();
+            $table->foreignId('order_id')->after('id')
+                ->nullable()->constrained('orders')
+                ->restrictOnUpdate()->cascadeOnDelete();
             $table->foreignId('product_id')->after('id')
                 ->nullable()->constrained('products')
                 ->restrictOnUpdate()->nullOnDelete();

@@ -11,6 +11,8 @@ class Order extends Model
 
     protected $table = 'orders';
 
+    protected $guarded = [];
+
     public function buyer()
     {
         return $this->belongsTo(User::class, 'buyer_id');
