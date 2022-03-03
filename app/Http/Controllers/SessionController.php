@@ -22,18 +22,6 @@ class SessionController extends Controller
             'zipCode' => 'required|numeric|digits:5'
         ]);
 
-        // $user = User::create([
-        //     'name' => $fields['username'],
-        //     'email' => $fields['email'],
-        //     'phone' => $fields['phone'],
-        //     'password' => bcrypt($fields['password'])
-        // ]);
-        // $address = UserAddress::create([
-        //     'user_id' => $user->id,
-        //     'address' => $fields['address'],
-        //     'state' => $fields['state'],
-        //     'zipCode' => $fields['zipCode']
-        // ]);
         $user = new User();
         $address = new UserAddress();
 

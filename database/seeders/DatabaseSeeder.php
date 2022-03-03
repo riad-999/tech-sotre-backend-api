@@ -24,6 +24,16 @@ class DatabaseSeeder extends Seeder
         User::factory()
             ->count(200)
             ->create();
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin')
+        ]);
+        User::factory()->create([
+            'name' => 'normal',
+            'email' => 'normal@gmail.com',
+            'password' => bcrypt('normal')
+        ]);
         $users = User::all();
         foreach ($users as $user) {
             UserAddress::factory()
@@ -409,6 +419,7 @@ class DatabaseSeeder extends Seeder
                 ])
             ]);
         }
+
         // creating orders and thier addresses and link them to products
         foreach ($users as $user) {
             $order = Order::factory()

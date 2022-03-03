@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StripeController;
@@ -25,4 +26,4 @@ Route::get('/featuredproducts', [ProductController::class, 'featuredProducts']);
 Route::post('/register', [SessionController::class, 'register']);
 Route::post('/login', [SessionController::class, 'login']);
 
-// Route::post('/checkAddress', [StripeController::class, 'checkAddress']);
+Route::get('/order', [Admin::class, 'order']);

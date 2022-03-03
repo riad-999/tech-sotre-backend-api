@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('total')->unsigned();
             $table->integer('sub_total')->unsigned();
             $table->integer('shippment_fee')->unsigned();
+            $table->boolean('exported')->default(0);
             $table->timestamps();
         });
     }
