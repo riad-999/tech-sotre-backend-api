@@ -1,22 +1,32 @@
 <?php
 
-use App\Http\Controllers\Admin;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StripeController;
-use App\Http\Resources\ProductResource;
-use App\Http\Resources\SingleProductResource;
-use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// admin routes
+Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
+    Route::post('/sessionStore', [SessionController::class, 'save']);
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/allProducts', [ProductController::class, 'allProducts']);
+    Route::post('/products/store', [ProductController::class, 'store']);
+    Route::put('/products/update/{product}', [ProductController::class, 'update']);
+    Route::put('/products/archive/{product}', [ProductController::class, 'archive']);
+    Route::put('/orders/deliver/{order}', [OrderController::class, 'deliver']);
+});
 //secure routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/productReview/{product}', [OrderController::class, 'productReview']);
+    Route::get('/orders/{order}', [OrderController::class, 'show']);
+    Route::get('/userOrders', [OrderController::class, 'userOrders']);
     Route::get('/auth', [SessionController::class, 'auth']);
     Route::post('/logout', [SessionController::class, 'logout']);
+    Route::post('/session/store', [SessionController::class, 'store']);
     Route::post('/createPaymentIntent', [StripeController::class, 'createPaymentIntent']);
-    Route::post('/handleOrder', [StripeController::class, 'handleOrder']);
-    Route::delete('/cancelOrder', [StripeController::class, 'cancelOrder']);
+    Route::post('/orders/store', [OrderController::class, 'store']);
+    Route::delete('/session', [SessionController::class, 'destroy']);
     Route::post('/checkAddress', [StripeController::class, 'checkAddress']);
 });
 // public routes
@@ -25,5 +35,3 @@ Route::get('/products/{product}', [ProductController::class, 'show']);
 Route::get('/featuredproducts', [ProductController::class, 'featuredProducts']);
 Route::post('/register', [SessionController::class, 'register']);
 Route::post('/login', [SessionController::class, 'login']);
-
-Route::get('/order', [Admin::class, 'order']);

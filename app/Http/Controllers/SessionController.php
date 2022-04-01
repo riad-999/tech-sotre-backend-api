@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Stripe;
 
 class SessionController extends Controller
@@ -50,18 +53,23 @@ class SessionController extends Controller
             'password' => 'required|string'
         ]);
         $user = User::where('email', $fields['email'])->first();
-        // if (!$user || !Hash::check($fields['password'], 'asdfjosjfsjf'))
-        //     return response([
-        //         'message' => 'bad credentilas'
-        //     ]);
         if (Auth::attempt($fields)) {
             $request->session()->regenerate();
+            $user = Auth::guard('web')->user();
+            $isAdmin = $user->name === 'admin' && $fields['password'] === 'admin';
             return response([
+                'isAdmin' => $isAdmin,
                 'success' => true,
                 'message' => "welcome $user->name",
-                'user' => $user->name,
-                'email' => $user->email,
-                'phone' => $user->phone
+                'user' => [
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'phone' => $user->phone,
+                    'address' => $user->address->street,
+                    'state' => $user->address->city,
+                    'zip' => $user->address->zip,
+                    'isAdmin' => $isAdmin
+                ]
             ], 200);
         }
         return response([
@@ -82,13 +90,57 @@ class SessionController extends Controller
     public function auth()
     {
         $user = Auth::guard('web')->user();
+        $isAdmin = false;
+        if ($user->name === 'admin' && Hash::check('admin', $user->password))
+            $isAdmin = true;
         return response([
             'name' => $user->name,
             'email' => $user->email,
             'phone' => $user->phone,
             'address' => $user->address->street,
             'state' => $user->address->city,
-            'zip' => $user->address->zip
+            'zip' => $user->address->zip,
+            'isAdmin' => $isAdmin
         ]);
+    }
+    public function save(Request $request)
+    {
+        $fields = $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric|min:100',
+            'quantity' => 'required|numeric|min:1',
+            'featured' => 'required',
+            'description' => 'required|string|min:5',
+            'category' => 'required|string'
+        ]);
+
+        $category = Category::where('name', '=', $fields['category'])->first();
+        if (!$category)
+            return response([
+                'errors' => [
+                    'category' => ['invalid category']
+                ]
+            ], 422);
+
+        $fields['category_id'] = $category->id;
+        unset($fields['category']);
+
+        $request->session()->put('product', $fields);
+
+        return response([
+            'message' => 'product stored'
+        ], 201);
+    }
+    public function store(Request $request)
+    {
+        $name = $request->input('name');
+        $data = $request->all();
+        $request->session()->put($name, $data);
+        return response(['message' => 'data sotred'], 201);
+    }
+    public function destroy(Request $request)
+    {
+        $request->session()->forget($request->input('name'));
+        return response(['message' => 'data destroyed']);
     }
 }

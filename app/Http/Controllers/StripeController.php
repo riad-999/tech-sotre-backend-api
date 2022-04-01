@@ -53,51 +53,51 @@ class StripeController extends Controller
             'message' => 'payment intent generated successfully'
         ]);
     }
-    public function handleOrder(Request $request)
-    {
-        $user = Auth::guard('web')->user();
-        $items = $request->all()['items'];
-        $address = $request->all()['address'];
-        $amount = $this->amount($items, 1000);
-        // return response([
-        //     'user' => $user
-        // ]);
-        $order = new Order([
-            'buyer_id' => $user->id,
-            'total' => $amount,
-            'sub_total' => $amount - $this->shippmentFee,
-            'shippment_fee' => $this->shippmentFee,
-        ]);
-        $order->save();
-        $order->address()->create([
-            'street' => $address['address'],
-            'city' => $address['state'],
-            'zip' => $address['zip']
-        ]);
+    // public function handleOrder(Request $request)
+    // {
+    //     $user = Auth::guard('web')->user();
+    //     $items = $request->all()['items'];
+    //     $address = $request->all()['address'];
+    //     $amount = $this->amount($items, 1000);
+    //     // return response([
+    //     //     'user' => $user
+    //     // ]);
+    //     $order = new Order([
+    //         'buyer_id' => $user->id,
+    //         'total' => $amount,
+    //         'sub_total' => $amount - $this->shippmentFee,
+    //         'shippment_fee' => $this->shippmentFee,
+    //     ]);
+    //     $order->save();
+    //     $order->address()->create([
+    //         'street' => $address['address'],
+    //         'city' => $address['state'],
+    //         'zip' => $address['zip']
+    //     ]);
 
-        foreach ($items as $item) {
-            $product = Product::find($item['id']);
-            $order->products()->attach($product->id, ['quantity' => $item['quantity']]);
-        }
+    //     foreach ($items as $item) {
+    //         $product = Product::find($item['id']);
+    //         $order->products()->attach($product->id, ['quantity' => $item['quantity']]);
+    //     }
 
-        return response([
-            'id' => $order->id,
-            'message' => 'all good'
-        ], 201);
-    }
-    public function cancelOrder(Request $request)
-    {
-        $id = $request->all()['id'];
+    //     return response([
+    //         'id' => $order->id,
+    //         'message' => 'all good'
+    //     ], 201);
+    // }
+    // public function cancelOrder(Request $request)
+    // {
+    //     $id = $request->all()['id'];
 
-        $order = Order::find($id);
+    //     $order = Order::find($id);
 
-        $order->delete();
+    //     $order->delete();
 
-        return response([
-            'order' => $order,
-            'message' => 'order canceled successfully'
-        ]);
-    }
+    //     return response([
+    //         'order' => $order,
+    //         'message' => 'order canceled successfully'
+    //     ]);
+    // }
     public function checkAddress(Request $request)
     {
         $fields = $request->validate([
@@ -110,18 +110,18 @@ class StripeController extends Controller
             'message' => 'all good'
         ]);
     }
-    private function amount($items, $shippment)
-    {
-        $amount = 0;
-        foreach ($items as $item) {
-            $product = Product::find($item['id']);
-            if (!$product) {
-                throw new \ErrorException('invalid product id');
-            }
-            $amount += $product->price * $item['quantity'];
-        }
-        $amount += $shippment;
+    // private function amount($items, $shippment)
+    // {
+    //     $amount = 0;
+    //     foreach ($items as $item) {
+    //         $product = Product::find($item['id']);
+    //         if (!$product) {
+    //             throw new \ErrorException('invalid product id');
+    //         }
+    //         $amount += $product->price * $item['quantity'];
+    //     }
+    //     $amount += $shippment;
 
-        return $amount;
-    }
+    //     return $amount;
+    // }
 }

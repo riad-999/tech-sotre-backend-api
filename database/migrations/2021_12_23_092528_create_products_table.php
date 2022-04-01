@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('price')->unsigned()->index();
             $table->boolean('featured')->default(0)->index();
             $table->integer('quantity')->unsigned();
+            $table->boolean('archived')->default(0);
             $table->text('description')->fulltext();
             $table->json('images');
             $table->timestamps();

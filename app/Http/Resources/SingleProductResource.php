@@ -16,9 +16,13 @@ class SingleProductResource extends JsonResource
     {
         $reviews = $this->reviews;
         $sum = 0;
+        $count = 0;
         $comments = [];
         foreach ($reviews as $review) {
+            if (!$review->score)
+                continue;
             $sum += $review->score;
+            $count++;
             if ($review->comment)
                 array_push($comments, [
                     'user' => $review->user->name,
@@ -32,11 +36,11 @@ class SingleProductResource extends JsonResource
         foreach ($orders as $order) {
             $sold += $order->pivot->quantity;
         }
-        $score = round($sum / $reviews->count(), 1);
+        $score = $count ? round($sum / $count, 1) : 0;
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'category' => $this->category->name,
+            'category' => $this->category ? $this->category->name : null,
             'price' => $this->price,
             'score' => $score,
             'sold' => $sold,
@@ -44,6 +48,7 @@ class SingleProductResource extends JsonResource
             'total_reviews' => $reviews->count(),
             'quantity' => $this->quantity,
             'description' => $this->description,
+            'featured' => $this->featured,
             'images' => json_decode($this->images)
         ];
     }

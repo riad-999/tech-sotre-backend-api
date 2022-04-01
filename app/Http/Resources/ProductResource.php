@@ -16,17 +16,21 @@ class ProductResource extends JsonResource
     {
         $reviews = $this->reviews;
         $sum = 0;
+        $count = 0;
         foreach ($reviews as $review) {
+            if (!$review->score)
+                continue;
             $sum += $review->score;
+            $count++;
         }
-        $count = $reviews->count();
         $score = $count ? round($sum / $count, 1) : null;
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'category' => $this->category->name,
+            'category' => $this->category ? $this->category->name : null,
             'price' => $this->price,
             'featured' => $this->featured,
+            'archived' => $this->archived,
             'score' => $score,
             'total_reviews' => $reviews->count(),
             'quantity' => $this->quantity,

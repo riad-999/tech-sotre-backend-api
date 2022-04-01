@@ -19,7 +19,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::guard('web')->user();
-        if (!Hash::check('admin', bcrypt('admin'))) {
+        if (!Hash::check('admin', $user->password)) {
             abort(401, 'unauthorized');
         }
         return $next($request);

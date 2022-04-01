@@ -15,8 +15,8 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('score')->unsigned()->index();
-            $table->text('comment')->nullable();
+            $table->tinyInteger('score')->unsigned()->index()->nullable()->default(null);
+            $table->text('comment')->nullable()->default(null);
             $table->timestamps();
         });
     }

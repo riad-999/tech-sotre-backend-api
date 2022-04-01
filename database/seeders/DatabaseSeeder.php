@@ -55,11 +55,6 @@ class DatabaseSeeder extends Seeder
             Category::factory()
                 ->create(['name' => $category_name]);
         }
-        // foreach (Category::all() as $category) {
-        //     Product::factory()
-        //         ->count(rand(10, 20))
-        //         ->create(['category_id' => $category->id]);
-        // }
 
         //CPUs
         {

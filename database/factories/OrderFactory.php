@@ -16,7 +16,8 @@ class OrderFactory extends Factory
         return [
             'total' => 120000,
             'sub_total' => 100000,
-            'shippment_fee' => 20000
+            'shippment_fee' => 20000,
+            'exported' => [1, 0, 1, 1, 1][rand(0, 4)]
         ];
     }
 }
