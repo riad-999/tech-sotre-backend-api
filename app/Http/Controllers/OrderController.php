@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    private $shippmentFee = 10000;
+    private $shippmentFee = 1000;
 
     public function index()
     {
@@ -81,10 +81,26 @@ class OrderController extends Controller
             'message' => 'order stored'
         ], 201);
     }
+    public function save(Request $request)
+    {
+        $items = $request->input('items');
+        $check = $this->checkQuanity($items);
+        if ($check['invalid'])
+            return response($check);
+
+        $data = $request->all();
+        $request->session()->put('order', $data);
+        return response(['message' => 'data sotred'], 201);
+    }
+    public function destroy(Request $request)
+    {
+        $request->session()->forget($request->input('name'));
+        return response(['message' => 'data destroyed']);
+    }
     public function userOrders()
     {
         $user = Auth::guard('web')->user();
-        $orders = $user->orders;
+        $orders = Order::where('buyer_id', $user->id)->latest()->get();
         return response([
             'user' => [
                 'name' => $user->name,
@@ -115,5 +131,17 @@ class OrderController extends Controller
         }
 
         return $amount;
+    }
+    private function checkQuanity($items)
+    {
+        $check = ['invalid' => false, 'messages' => []];
+        foreach ($items as $item) {
+            $product = Product::findOrFail($item['id']);
+            if ($item['quantity'] > $product->quantity) {
+                array_push($check['messages'], "only $product->quantity $product->name are availabe");
+                $check['invalid'] = true;
+            }
+        }
+        return $check;
     }
 }

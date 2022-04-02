@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             Product::factory()->create([
                 'name' => 'intel i3 10100',
                 'category_id' => 1,
-                'price' => 110,
+                'price' => 11000,
                 'images' => json_encode([
                     'main' => 'i3-10100.jpg',
                     'others' => [

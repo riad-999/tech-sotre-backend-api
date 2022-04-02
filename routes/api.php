@@ -23,7 +23,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/userOrders', [OrderController::class, 'userOrders']);
     Route::get('/auth', [SessionController::class, 'auth']);
     Route::post('/logout', [SessionController::class, 'logout']);
-    Route::post('/session/store', [SessionController::class, 'store']);
+    Route::post('/orders/save', [OrderController::class, 'save']);
     Route::post('/createPaymentIntent', [StripeController::class, 'createPaymentIntent']);
     Route::post('/orders/store', [OrderController::class, 'store']);
     Route::delete('/session', [SessionController::class, 'destroy']);

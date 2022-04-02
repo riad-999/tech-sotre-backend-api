@@ -131,16 +131,4 @@ class SessionController extends Controller
             'message' => 'product stored'
         ], 201);
     }
-    public function store(Request $request)
-    {
-        $name = $request->input('name');
-        $data = $request->all();
-        $request->session()->put($name, $data);
-        return response(['message' => 'data sotred'], 201);
-    }
-    public function destroy(Request $request)
-    {
-        $request->session()->forget($request->input('name'));
-        return response(['message' => 'data destroyed']);
-    }
 }
