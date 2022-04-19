@@ -21,6 +21,6 @@
         </style>
     </head>
     <body class="antialiased">
-        <img src="/storage/images/rysen-3-32000g.jpg" />
+        <h1>hellow riad</h1>
     </body>
 </html>
