@@ -6,6 +6,7 @@ use App\Http\Resources\ProductResource;
 use App\Http\Resources\SingleProductResource;
 use App\Models\Category;
 use App\Models\Product;
+use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
@@ -45,7 +46,7 @@ class ProductController extends Controller
     {
         // validation
         $validateOn = [];
-        $rules = 'mimes:jpg,jpeg,png,webp,svg|max:4000';
+        $rules = 'mimes:jpg,jpeg,png,webp|max:4000';
         $validateOn['main'] = 'required|' . $rules;
         for ($i = 0; $i < 3; $i++) {
             $validateOn["other$i"] = $rules;
@@ -53,18 +54,32 @@ class ProductController extends Controller
         $request->validate($validateOn);
 
         // saving images names in DB and images data in file system
-        $path = $request->file('main')->store('public/images');
-        $name = explode('/', $path)[2];
+        // $path = $request->file('main')->store('public/images');
+        $mainImg = $request->file('main');
+        $result = $mainImg->storeOnCloudinary('tech-store');
+        $url = $result->getSecurePath();
+        $uploadId = $result->getPublicId();
+
+        $name = explode('/', $url);
+        $name = $name[count($name) - 1];
+
         $images = [
             'main' => $name,
-            'others' => []
+            'others' => [],
+            'ids' => ['main' => $uploadId, 'others' => []]
         ];
+
         for ($i = 0; $i < 3; $i++) {
             if (!$request->file("other$i"))
                 break;
-            $path = $request->file("other$i")->store('public/images');
-            $name = explode('/', $path)[2];
+            $file = $request->file("other$i");
+            $result = $file->storeOnCloudinary('tech-store');
+            $url = $result->getSecurePath();
+            $uploadId = $result->getPublicId();
+            $name = explode('/', $url);
+            $name = $name[count($name) - 1];
             array_push($images['others'], $name);
+            array_push($images['ids']['others'], $uploadId);
         }
         $fields = $request->session()->get('product', null);
         if (!$fields) {
@@ -114,7 +129,8 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validateOn = [];
-        $rules = 'mimes:jpg,jpeg,png,webp,svg|max:4000';
+        $rules = 'mimes:jpg,jpeg,png,webp|max:4000';
+        return response(['message' => $request->file('main')]);
         if ($request->file('main'))
             $validateOn['main'] = $rules;
         if ($request->file('other0'))
@@ -129,28 +145,54 @@ class ProductController extends Controller
         if ($request->file('main')) {
             // delete old image
             $name = $productImages['main'];
-            Storage::delete("public/images/$name");
+            $id = isset($productImages['ids']) ? $productImages['ids']['main'] : null;
+            // Storage::delete("public/images/$name");
+            return response($id);
+            if ($id)
+                Cloudinary::destroy($id);
             // store new image
-            $path = $request->file('main')->store('public/images');
-            $name = explode('/', $path)[2];
-            // update images array
+            $mainImg = $request->file('main');
+            $result = $mainImg->storeOnCloudinary('tech-store');
+            $url = $result->getSecurePath();
+            $uploadId = $result->getPublicId();
+
+            $name = explode('/', $url);
+            $name = $name[count($name) - 1];
+            if (!isset($productImages['ids']))
+                $productImages['ids'] = [];
             $productImages['main'] = $name;
+            $productImages['ids']['main'] = $uploadId;
         }
         // check if at least 1 image is set
         if ($request->file('other0')) {
             // delete all others
             $names = $productImages['others'];
+            $i = 0;
             foreach ($names as $name) {
-                Storage::delete("public/images/$name");
+                // if it does not start with image delete it else keep it
+                if (strpos($name, 'image') != 0) {
+                    // Storage::delete("public/images/$name");
+                    $id = $productImages['ids']['others'][$i];
+                    Cloudinary::destroy($id);
+                    $i++;
+                }
             }
             // store the new images
+            if (!isset($productImages['ids']))
+                $productImages['ids'] = [];
             $productImages['others'] = [];
+            $productImages['ids']['others'] = [];
             for ($i = 0; $i < 3; $i++) {
                 if (!$request->file("other$i"))
                     break;
-                $path = $request->file("other$i")->store('public/images');
-                $name = explode('/', $path)[2];
+                $file = $request->file("other$i");
+                $result = $file->storeOnCloudinary('tech-store');
+                $url = $result->getSecurePath();
+                $uploadId = $result->getPublicId();
+                $name = explode('/', $url);
+                $name = $name[count($name) - 1];
                 array_push($productImages['others'], $name);
+                array_push($productImages['ids']['others'], $uploadId);
             }
         }
         // update product info

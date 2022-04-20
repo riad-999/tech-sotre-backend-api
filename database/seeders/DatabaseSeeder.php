@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'price' => 10000,
                 'images' => json_encode([
-                    'main' => 'rysen-3-32000g.jpg',
+                    'main' => 'rysen-3-32000g_gpz00q.jpg',
                     'others' => [
                         'image1.jpg',
                         'image2.jpg',
@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'price' => 11000,
                 'images' => json_encode([
-                    'main' => 'i3-10100.jpg',
+                    'main' => 'i3-10100_zezrgg.jpg',
                     'others' => [
                         'image1.jpg',
                         'image2.jpg',
@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'price' => 12000,
                 'images' => json_encode([
-                    'main' => 'rysen-3-3300x.jpg',
+                    'main' => 'rysen-3-3300x_po0r0n.jpg',
                     'others' => [
                         'image1.jpg',
                         'image2.jpg',
@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'price' => 16000,
                 'images' => json_encode([
-                    'main' => 'rysen-5-3600.jpg',
+                    'main' => 'rysen-5-3600_xshyni.jpg',
                     'others' => [
                         'image1.jpg',
                         'image2.jpg',
