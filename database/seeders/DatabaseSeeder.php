@@ -65,9 +65,9 @@ class DatabaseSeeder extends Seeder
                 'images' => json_encode([
                     'main' => 'rysen-3-32000g_gpz00q.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -78,9 +78,9 @@ class DatabaseSeeder extends Seeder
                 'images' => json_encode([
                     'main' => 'i3-10100_zezrgg.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -91,9 +91,9 @@ class DatabaseSeeder extends Seeder
                 'images' => json_encode([
                     'main' => 'rysen-3-3300x_po0r0n.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -104,9 +104,9 @@ class DatabaseSeeder extends Seeder
                 'images' => json_encode([
                     'main' => 'rysen-5-3600_xshyni.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -117,9 +117,9 @@ class DatabaseSeeder extends Seeder
                 'images' => json_encode([
                     'main' => 'rysen-5-5600x_xugzxi.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -130,9 +130,9 @@ class DatabaseSeeder extends Seeder
                 'images' => json_encode([
                     'main' => 'rysen-7-3700x_et6tyv.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -143,9 +143,9 @@ class DatabaseSeeder extends Seeder
                 'images' => json_encode([
                     'main' => 'rysen-9-5950x_ptzjq0.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -154,11 +154,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'price' => 25000,
                 'images' => json_encode([
-                    'main' => 'i5-12600k.jpg',
+                    'main' => 'i5-12600k_nju6cp.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -167,11 +167,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'price' => 20000,
                 'images' => json_encode([
-                    'main' => 'i5-12600f.jpg',
+                    'main' => 'i5-12600f_pkwf9p.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -180,11 +180,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1,
                 'price' => 32000,
                 'images' => json_encode([
-                    'main' => 'i7-12700k.jpg',
+                    'main' => 'i7-12700k_k9hnts.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -194,11 +194,11 @@ class DatabaseSeeder extends Seeder
                 'price' => 80000,
                 'featured' => 1,
                 'images' => json_encode([
-                    'main' => 'i9-12900k.jpg',
+                    'main' => 'i9-12900k_kektfa.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -210,11 +210,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 2,
                 'price' => 18000,
                 'images' => json_encode([
-                    'main' => 'gtx-1650-super.jpg',
+                    'main' => 'gtx-1650-super_r9cdc5.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -223,11 +223,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 2,
                 'price' => 23000,
                 'images' => json_encode([
-                    'main' => 'gtx-1660-super.jpeg',
+                    'main' => 'gtx-1660-super_mxiums.jpeg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -236,11 +236,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 2,
                 'price' => 28000,
                 'images' => json_encode([
-                    'main' => 'rtx-2060-super.jpg',
+                    'main' => 'rtx-2060-super_tyozub.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -249,11 +249,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 2,
                 'price' => 40000,
                 'images' => json_encode([
-                    'main' => 'rtx-3060-ti.jpg',
+                    'main' => 'rtx-3060-ti_qdrir9.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -263,11 +263,11 @@ class DatabaseSeeder extends Seeder
                 'price' => 80000,
                 'featured' => 1,
                 'images' => json_encode([
-                    'main' => 'rtx-3080-ti.jpg',
+                    'main' => 'rtx-3080-ti_qnvxrw.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -276,11 +276,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 2,
                 'price' => 60000,
                 'images' => json_encode([
-                    'main' => 'rx-6700-xt.png',
+                    'main' => 'rx-6700-xt_vqhjkf.png',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -290,11 +290,11 @@ class DatabaseSeeder extends Seeder
                 'price' => 75000,
                 'featured' => 1,
                 'images' => json_encode([
-                    'main' => 'rx-6800-xt.webp',
+                    'main' => 'rx-6800-xt_j1u9jt.webp',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -304,11 +304,11 @@ class DatabaseSeeder extends Seeder
                 'price' => 150000,
                 'featured' => 1,
                 'images' => json_encode([
-                    'main' => 'rtx-3090.jpg',
+                    'main' => 'rtx-3090_ue8z3b.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -322,9 +322,9 @@ class DatabaseSeeder extends Seeder
                 'images' => json_encode([
                     'main' => 'adata-ram.webp',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -334,11 +334,11 @@ class DatabaseSeeder extends Seeder
                 'price' => 12000,
                 'featured' => 1,
                 'images' => json_encode([
-                    'main' => 'curssaire-ram.jpg',
+                    'main' => 'curssaire-ram_i1mutf.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -347,11 +347,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 3,
                 'price' => 3500,
                 'images' => json_encode([
-                    'main' => 'kingstron-ram.jpg',
+                    'main' => 'kingstron-ram_ilcirz.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -363,11 +363,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 4,
                 'price' => 4000,
                 'images' => json_encode([
-                    'main' => 'adata-ssd.jpg',
+                    'main' => 'adata-ssd_cz9zkd.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -376,11 +376,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 4,
                 'price' => 8000,
                 'images' => json_encode([
-                    'main' => 'seagate-hdd.jpg',
+                    'main' => 'seagate-hdd_pq6vkm.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -392,11 +392,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 7,
                 'price' => 4000,
                 'images' => json_encode([
-                    'main' => 'asus-b4580-ma.jpg',
+                    'main' => 'asus-b4580-ma_k66qig.jpg',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
@@ -405,11 +405,11 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 7,
                 'price' => 4000,
                 'images' => json_encode([
-                    'main' => 'msi-b550.png',
+                    'main' => 'msi-b550_uzrbst.png',
                     'others' => [
-                        'image1.jpg',
-                        'image2.jpg',
-                        'image3.jpg'
+                        'image1_l9r2qp.jpg',
+                        'image2_k1v7he.jpg',
+                        'image3_r1jawp.jpg'
                     ]
                 ])
             ]);
