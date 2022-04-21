@@ -35,7 +35,6 @@ class ProductController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -130,7 +129,6 @@ class ProductController extends Controller
     {
         $validateOn = [];
         $rules = 'mimes:jpg,jpeg,png,webp|max:4000';
-        return response(['message' => $request->file('main')]);
         if ($request->file('main'))
             $validateOn['main'] = $rules;
         if ($request->file('other0'))
@@ -138,18 +136,17 @@ class ProductController extends Controller
                 $validateOn["other$i"] = $rules;
             }
         $request->validate($validateOn);
-
         // saving images names in DB and images data in file system
         $productImages = json_decode($product->images, true);
+        // return response(['names' => $productImages['others'], 'ids' => $productImages['ids']])
         // check if main images is set
         if ($request->file('main')) {
             // delete old image
             $name = $productImages['main'];
             $id = isset($productImages['ids']) ? $productImages['ids']['main'] : null;
             // Storage::delete("public/images/$name");
-            return response($id);
             if ($id)
-                Cloudinary::destroy($id);
+                cloudinary()->destroy($id);
             // store new image
             $mainImg = $request->file('main');
             $result = $mainImg->storeOnCloudinary('tech-store');
@@ -170,10 +167,10 @@ class ProductController extends Controller
             $i = 0;
             foreach ($names as $name) {
                 // if it does not start with image delete it else keep it
-                if (strpos($name, 'image') != 0) {
+                if (!str_starts_with($name, 'image')) {
                     // Storage::delete("public/images/$name");
                     $id = $productImages['ids']['others'][$i];
-                    Cloudinary::destroy($id);
+                    cloudinary()->destroy($id);
                     $i++;
                 }
             }
