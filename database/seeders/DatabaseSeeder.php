@@ -320,7 +320,7 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 3,
                 'price' => 6000,
                 'images' => json_encode([
-                    'main' => 'adata-ram.webp',
+                    'main' => 'adata-ram_i1mutf.webp',
                     'others' => [
                         'image1_l9r2qp.jpg',
                         'image2_k1v7he.jpg',
@@ -334,7 +334,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 12000,
                 'featured' => 1,
                 'images' => json_encode([
-                    'main' => 'curssaire-ram_i1mutf.jpg',
+                    'main' => 'curssaire-ram_siawyp.jpg',
                     'others' => [
                         'image1_l9r2qp.jpg',
                         'image2_k1v7he.jpg',

@@ -31,6 +31,10 @@ class OrderController extends Controller
     {
         // return $order;
         $order = new OrderResource($order);
+        $user = Auth::guard('web')->user();
+        $test = Order::where('buyer_id', $user->id)->where('id', $order->id)->latest()->get();
+        if (!count($test))
+            return response('', 401);
         return response($order);
     }
     public function deliver(Request $request, Order $order)
